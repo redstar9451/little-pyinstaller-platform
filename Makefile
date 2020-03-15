@@ -1,5 +1,5 @@
 all: clean imported_libs
-	pyinstaller -F smart.py --onefile
+	pyinstaller -F main.py --onefile
 	@echo 'done'
 
 imported_libs:
@@ -13,5 +13,5 @@ clean:
 	-rm -rf dist
 	-rm -rf build
 	find . -name __pycache__ | xargs rm -rf
-	-rm -rf smart.spec
+	-rm -rf main.spec
 
