@@ -1,5 +1,10 @@
+target ?= main
 all: clean imported_libs
-	pyinstaller -F main.py --onefile
+	pyinstaller -F ${target}.py --onefile
+	-rm -rf ${target}
+	mkdir ${target}
+	cp -R dist/${target} app ${target}
+	tar czf ${target}.tgz ${target}
 	@echo 'done'
 
 imported_libs:
@@ -13,5 +18,6 @@ clean:
 	-rm -rf dist
 	-rm -rf build
 	find . -name __pycache__ | xargs rm -rf
-	-rm -rf main.spec
+	-rm -rf ${target}.spec
+	-rm -rf ${target}.tgz
 
